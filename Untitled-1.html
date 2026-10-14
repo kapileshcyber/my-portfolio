@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alagukapilesh | Creative Developer</title>
+<meta name="description" content="Portfolio of Alagukapilesh, a Computer Science graduate and aspiring web developer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #071b27;
+  --panel: #0d2937;
+  --white: #f3f5f2;
+  --muted: #a5b7bd;
+  --teal: #8bd1c7;
+  --line: rgba(255,255,255,.14);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1180px, 88%); margin: auto; }
+header {
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  z-index: 10;
+  padding: 28px 0;
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'Manrope', sans-serif;
+  font-size: 27px; font-weight: 800; letter-spacing: -2px;
+}
+.logo span { color: var(--teal); }
+nav { display: flex; gap: 30px; }
+nav a {
+  font-size: 12px; color: #c4d1d4;
+  text-transform: uppercase; letter-spacing: 1px;
+  transition: color .3s;
+}
+nav a:hover { color: var(--teal); }
+.menu-btn {
+  display: none; border: 1px solid var(--line);
+  background: transparent; color: white;
+  padding: 9px 12px; cursor: pointer;
+}
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 45%, rgba(32,112,119,.24), transparent 38%),
+    linear-gradient(130deg, #071b27 15%, #0b2b38 70%, #071b27);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 65px 65px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+.hero-content { position: relative; z-index: 2; padding-top: 90px; }
+.eyebrow {
+  color: var(--teal); font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(54px, 9.5vw, 125px);
+  line-height: .98; letter-spacing: -7px;
+  font-weight: 600;
+}
+.hero h1 span {
+  display: block; color: var(--teal);
+  font-weight: 400; font-style: italic;
+}
+.hero-bottom {
+  margin-top: 48px; display: flex;
+  justify-content: space-between; align-items: end; gap: 25px;
+}
+.hero-bottom p {
+  max-width: 410px; color: var(--muted);
+  line-height: 1.9; font-size: 14px;
+}
+.button {
+  display: inline-flex; gap: 22px; align-items: center;
+  border: 1px solid rgba(139,209,199,.65);
+  border-radius: 50px; padding: 15px 21px;
+  color: var(--teal); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 1px;
+  transition: .3s;
+}
+.button:hover { background: var(--teal); color: var(--bg); }
+.scroll-label {
+  position: absolute; bottom: 32px; right: 6%;
+  color: var(--muted); font-size: 10px;
+  letter-spacing: 2px; writing-mode: vertical-rl;
+}
+section { padding: 115px 0; }
+.section-top {
+  display: flex; justify-content: space-between;
+  align-items: start; gap: 25px; margin-bottom: 55px;
+}
+.number {
+  color: var(--teal); font-size: 11px;
+  letter-spacing: 2px; margin-bottom: 18px;
+}
+h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 500; letter-spacing: -3px; line-height: 1.1;
+}
+.section-note {
+  color: var(--muted); max-width: 300px;
+  line-height: 1.9; font-size: 13px; margin-top: 30px;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1.1fr .9fr;
+  gap: 70px; align-items: center;
+}
+.about-copy {
+  color: var(--muted); font-size: 16px; line-height: 2;
+}
+.about-copy p + p { margin-top: 20px; }
+.about-card {
+  min-height: 350px; border: 1px solid var(--line);
+  background: linear-gradient(145deg, #103542, #0a202d);
+  padding: 35px; display: flex; flex-direction: column;
+  justify-content: space-between; position: relative;
+  transform-style: preserve-3d; transition: transform .3s;
+}
+.about-card .initials {
+  font-family: 'Manrope', sans-serif; font-size: 100px;
+  letter-spacing: -9px; color: var(--teal);
+}
+.about-card p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.skills { background: #091f2c; }
+.skill-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--line);
+}
+.skill {
+  padding: 28px 20px 28px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding .3s;
+}
+.skill:hover { padding-left: 10px; }
+.skill span { color: var(--teal); font-size: 11px; }
+.skill h3 { margin: 15px 0 9px; font-size: 20px; font-weight: 500; }
+.skill p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.project-card {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--panel); border: 1px solid var(--line);
+}
+.project-visual {
+  min-height: 330px; display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(139,209,199,.25), transparent 45%),
+    linear-gradient(135deg,#123a47,#081b28);
+  padding: 30px;
+}
+.code-window {
+  width: 100%; max-width: 360px; border: 1px solid #45616a;
+  background: rgba(4,18,26,.88); padding: 20px;
+  box-shadow: 0 25px 70px #03101866;
+}
+.dots { display: flex; gap: 6px; margin-bottom: 22px; }
+.dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.code-line { height: 7px; background: #284c57; margin: 12px 0; border-radius: 8px; }
+.code-line.short { width: 48%; }
+.code-line.mid { width: 72%; }
+.code-line.accent { width: 60%; background: #71b9b0; }
+.project-info { padding: 45px; display: flex; flex-direction: column; justify-content: center; }
+.project-info h3 {
+  font-family: 'Manrope', sans-serif; font-size: 31px;
+  font-weight: 500; letter-spacing: -1px; margin: 15px 0;
+}
+.project-info p { color: var(--muted); line-height: 1.9; font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 23px 0; }
+.tags span {
+  border: 1px solid var(--line); border-radius: 20px;
+  padding: 7px 11px; color: #c7d5d8; font-size: 10px;
+}
+.timeline { border-top: 1px solid var(--line); }
+.timeline-item {
+  display: grid; grid-template-columns: .65fr 1.35fr;
+  gap: 35px; padding: 30px 0; border-bottom: 1px solid var(--line);
+}
+.timeline-item .date { color: var(--teal); font-size: 12px; }
+.timeline-item h3 { font-size: 19px; font-weight: 500; margin-bottom: 9px; }
+.timeline-item p { color: var(--muted); font-size: 13px; line-height: 1.8; }
+.contact {
+  background: #0c2936; text-align: center;
+  padding: 120px 0;
+}
+.contact h2 { margin-bottom: 25px; }
+.contact p { color: var(--muted); line-height: 1.9; margin: 0 auto 30px; }
+.contact-links {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: center; margin-top: 25px;
+}
+footer {
+  padding: 25px 0; display: flex; justify-content: space-between;
+  gap: 15px; color: var(--muted); font-size: 11px;
+}
+.reveal { opacity: 0; transform: translateY(25px); transition: opacity .8s, transform .8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 700px) {
+  header { padding: 20px 0; }
+  nav {
+    display: none; position: absolute; top: 75px; right: 6%;
+    flex-direction: column; background: #0d2937;
+    padding: 25px; border: 1px solid var(--line);
+  }
+  nav.open { display: flex; }
+  .menu-btn { display: block; }
+  .hero h1 { letter-spacing: -3px; }
+  .hero-bottom, .section-top { flex-direction: column; align-items: start; }
+  .about-grid, .project-card { grid-template-columns: 1fr; }
+  .about-grid { gap: 30px; }
+  .about-card { min-height: 250px; }
+  .about-card .initials { font-size: 75px; }
+  .skill-grid { grid-template-columns: repeat(2,1fr); gap: 0 18px; }
+  .project-visual { min-height: 250px; }
+  .project-info { padding: 30px 24px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+  section { padding: 80px 0; }
+  .scroll-label { display: none; }
+  footer { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">AK<span>.</span></a>
+    <nav id="navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">MENU +</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div class="eyebrow">Computer Science Graduate · 2026</div>
+    <h1>Digital ideas.<span>Thoughtfully built.</span></h1>
+    <div class="hero-bottom">
+      <p>
+        Hello, I'm Alagukapilesh — an aspiring web developer interested
+        in creating clean, responsive and meaningful digital experiences.
+      </p>
+      <a class="button" href="#projects">Explore my work <span>↘</span></a>
+    </div>
+  </div>
+  <div class="scroll-label">SCROLL TO DISCOVER ↓</div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="number">01 / ABOUT</div><h2>A little about<br>what I do.</h2></div>
+      <p class="section-note">Curiosity drives my learning. Good design guides my approach. Technology brings ideas to life.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-copy">
+        <p>I completed my B.Sc. in Computer Science with a Cyber Security specialization at Madurai Kamaraj University in 2026.</p>
+        <p>I'm building my skills in front-end development, databases and web security. I enjoy learning how websites work and turning ideas into useful interfaces.</p>
+        <p>I'm looking for a fresher opportunity where I can learn from a team, improve my technical skills and contribute to real projects.</p>
+        <a class="button" href="#contact" style="margin-top:25px">Let's connect ↗</a>
+      </div>
+      <div class="about-card" id="tiltCard">
+        <div class="number">CREATIVE MINDSET / TECHNICAL FOUNDATION</div>
+        <div class="initials">AK.</div>
+        <p>MADURAI, TAMIL NADU, INDIA<br>OPEN TO FRESHER OPPORTUNITIES</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="number">02 / EXPERTISE</div><h2>Tools I work<br>with.</h2></div>
+      <p class="section-note">A growing toolkit of practical skills. I'm continuously learning and improving through hands-on practice.</p>
+    </div>
+    <div class="skill-grid reveal">
+      <div class="skill"><span>01 — FRONT END</span><h3>HTML & CSS</h3><p>Semantic HTML, layouts, styling and responsive design.</p></div>
+      <div class="skill"><span>02 — INTERACTION</span><h3>JavaScript</h3><p>Fundamentals and interactive web page features.</p></div>
+      <div class="skill"><span>03 — DATABASE</span><h3>SQL & MySQL</h3><p>Queries, joins, filtering and data management basics.</p></div>
+      <div class="skill"><span>04 — PROGRAMMING</span><h3>Python</h3><p>Programming fundamentals and academic project work.</p></div>
+      <div class="skill"><span>05 — SECURITY</span><h3>Web Security</h3><p>SQL injection concepts and basic vulnerability testing.</p></div>
+      <div class="skill"><span>06 — WORKFLOW</span><h3>Git & GitHub</h3><p>Version control fundamentals and project publishing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="number">03 / SELECTED WORK</div><h2>Learning by<br>building.</h2></div>
+      <p class="section-note">Academic and personal projects that help me apply what I learn.</p>
+    </div>
+    <article class="project-card reveal">
+      <div class="project-visual">
+        <div class="code-window">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="code-line accent"></div>
+          <div class="code-line mid"></div>
+          <div class="code-line short"></div>
+          <div class="code-line"></div>
+          <div class="code-line accent"></div>
+          <div class="code-line mid"></div>
+          <div class="code-line short"></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="number">ACADEMIC PROJECT / 01</div>
+        <h3>SQL Injection<br>Automation Tool</h3>
+        <p>A Python-based academic project that tests web inputs using SQL injection payloads and examines server responses to help identify potential security weaknesses.</p>
+        <div class="tags"><span>PYTHON</span><span>WEB SECURITY</span><span>TESTING</span></div>
+        <p>Key learning: test automation, response analysis and understanding web application security.</p>
+      </div>
+    </article>
+    <p style="color:var(--muted);font-size:12px;margin-top:20px">More projects will be added as I continue building my portfolio.</p>
+  </div>
+</section>
+
+<section id="journey" class="skills">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="number">04 / MY JOURNEY</div><h2>Learning.<br>Growing.</h2></div>
+      <p class="section-note">My education and work experience have helped me build a foundation in technology and teamwork.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="date">2026</div>
+        <div><h3>B.Sc. Computer Science — Cyber Security</h3><p>Madurai Kamaraj University, Madurai</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="date">WORK EXPERIENCE</div>
+        <div><h3>Part-time Cashier — D-Mart</h3><p>Billing, customer service and day-to-day store operations. Developed communication, accuracy and teamwork skills.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="date">CERTIFICATIONS</div>
+        <div><h3>Technology & Security Learning</h3><p>Fundamentals of Cybersecurity · AI-Based Threat Detection in IoT · Machine Learning using Python</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container reveal">
+    <div class="number">05 / GET IN TOUCH</div>
+    <h2>Let's build<br>something meaningful.</h2>
+    <p>I'm looking for fresher opportunities in web development and related IT roles.<br>I'd be happy to connect and learn from your team.</p>
+    <a class="button" href="mailto:kapileshcyber@gmail.com">Email me ↗</a>
+    <div class="contact-links">
+      <a class="button" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a class="button" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="container">
+  <span>© <span id="year"></span> Alagukapilesh</span>
+  <span>Designed with curiosity · Built with code</span>
+  <a href="#home">BACK TO TOP ↑</a>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const menuBtn = document.getElementById('menuBtn');
+const navigation = document.getElementById('navigation');
+
+menuBtn.addEventListener('click', () => {
+  navigation.classList.toggle('open');
+});
+
+navigation.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navigation.classList.remove('open'));
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+const card = document.getElementById('tiltCard');
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  card.addEventListener('mousemove', event => {
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(900px) rotateY(0) rotateX(0)';
+  });
+}
+</script>
+</body>
+</html>
